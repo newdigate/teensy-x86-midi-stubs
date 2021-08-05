@@ -17,7 +17,7 @@ public:
 		Serial.println("midiCallback()");
 	};
 
-    void begin(long baudRate)
+    void begin()
 	{
 		// RtMidiIn constructor
 		try {
@@ -40,7 +40,7 @@ public:
 			}
 			std::cout << "  Input Port #" << i+1 << ": " << portName << '\n';
 		}
-  		midiin->openPort( 0 );
+  		midiin->openPort();
 		//midiin->setCallback(midiCallback);
 
 		// RtMidiOut constructor
@@ -63,6 +63,7 @@ public:
 			}
 			std::cout << "  Output Port #" << i+1 << ": " << portName << '\n';
 		}
+		midiout->openPort();
 		std::cout << '\n';
 
 
@@ -73,12 +74,10 @@ public:
 		return true;
 	};
 
-	void write(byte value)
-	{
+	void write(unsigned char * data, size_t length) {
 		if (midiout)
-			midiout->sendMessage(&value, 1);
-		//mSerial.write(value);
-	};
+			midiout->sendMessage(data, length);
+	}
 
 	void endTransmission()
 	{
