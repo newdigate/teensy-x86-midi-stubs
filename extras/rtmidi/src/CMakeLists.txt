@@ -30,7 +30,7 @@ write_basic_package_version_file(
 
 install(TARGETS teensy_x86_midi_stubs_rtmidi DESTINATION
 		LIBRARY DESTINATION ${LIB_INSTALL_DIR}
-		ARCHIVE DESTINATION ${LIB_INSTALL_DIR}
+		# ARCHIVE DESTINATION ${LIB_INSTALL_DIR}
 		PUBLIC_HEADER DESTINATION "include/teensy_x86_midi_stubs_rtmidi"
 		)
 
