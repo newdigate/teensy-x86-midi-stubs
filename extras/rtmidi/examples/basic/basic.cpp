@@ -62,42 +62,34 @@ void setup()
 }
 
 long run_count = 0;
-midi::Channel currentChannel = 0;
-byte currentNoteOffset = 0;
+midi::Channel currentChannel = 0, prevChannel = 0;
+byte currentNoteOffset = 0, prevNoteOffset = 0;
 
 void loop()
 {
     // Call MIDI.read the fastest you can for real-time performance.
     MIDI.read();
     run_count++;
-    run_count %= 100;
+    run_count %= 10;
 
     if (run_count == 0) {
         
-        midi::Message<128U> m;
-
-        m.channel = currentChannel;
-        m.type = midi::MidiType::NoteOn;
-        m.data1 = 53 + currentNoteOffset;
-        m.data2 = 0;
-        m.valid = true;
-        m.length = 3;
-        MIDI.send(m);
-
-        m.data2 = 127;
-        MIDI.send(m);
+        SetLEDMode(prevChannel+1, prevNoteOffset, APC40_LED_MODE_YELLOW);
+        //delay(1);
+        SetLEDMode(currentChannel+1, currentNoteOffset, APC40_LED_MODE_GREEN);
         
+        prevChannel = currentChannel;
+        prevNoteOffset = currentNoteOffset;
+
         currentNoteOffset ++;
 
-        if (currentChannel >= 8 && currentNoteOffset >= 8) {
+        if (currentChannel >= 7 && currentNoteOffset >= 5) {
             currentChannel = 0; 
             currentNoteOffset = 0;
-        } else if (currentNoteOffset == 8) {
+        } else if (currentNoteOffset >= 5) {
             currentNoteOffset = 0;
             currentChannel ++;
         }
-
-        Serial.printf("sent noteOn( data1: %d, data2: %d, channel: %d)\n", m.data1, m.data2, m.channel );
     }
 }
 
@@ -106,7 +98,7 @@ int main() {
     setup();
     while(true) {
         loop();
-        delay(10);
+        delayMicroseconds(1000);
     }
 }
 
@@ -125,19 +117,11 @@ bool SetLEDMode(int x, int y, int value)
     if (b1 >= 0x90 && b1 < 0xA0 && value == 0)
     {
         sendMessage(x, midi::MidiType::NoteOff, b2, 0 );
-//        message.push_back(b1 - 0x10);
-//        message.push_back(b2);
-//        message.push_back(0);
     }
     else
     {
         sendMessage(x, midi::MidiType::NoteOn, b2, value);
-        //message.push_back(b1);
-        //message.push_back(b2);
-        //message.push_back((unsigned int)value);
     }
-
-    //m_pRtMidiOut->sendMessage(&message);
 
     return true;
 }
