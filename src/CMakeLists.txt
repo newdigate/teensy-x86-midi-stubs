@@ -51,4 +51,4 @@ install(FILES
 # Add uninstall target
 # Requirements: Copy the uninstall.cmake file to the appropriate CMAKE_MODULE_PATH.
 add_custom_target(uninstall
-		"${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_SOURCE_DIR}/cmake/uninstall.cmake")
+		"${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_SOURCE_DIR}/../cmake/uninstall.cmake")
