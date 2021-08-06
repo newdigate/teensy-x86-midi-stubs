@@ -1,8 +1,7 @@
 #pragma once
 
 #include <vector>
-#include "../../../src/MIDI.h"
-#include "../../../src/midi_Defs.h"
+#include "MIDI.h"
 #include "RtMidiMIDI.h"
 
 template <class SerialPort>
