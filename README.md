@@ -4,3 +4,4 @@
 
 # credits
 * using midi code from [PaulStoffregen/MIDI](https://github.com/PaulStoffregen/MIDI) originally written by Francois Best's ```Arduino MIDI Library```
+* example using code copied from [Naseband/APC40Interface](https://github.com/Naseband/APC40Interface)
