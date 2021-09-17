@@ -4,7 +4,8 @@ project(basic_rtmidi_example)
 set(CMAKE_CXX_STANDARD 14)
 
 find_path(RTMIDI_INCLUDE_DIR NAMES RtMidi/RtMidi.h)
-include_directories(${RTMIDI_INCLUDE_DIR}/RtMidi)
+include_directories(${RTMIDI_INCLUDE_DIR})
+
 message(STATUS "find_path " ${RTMIDI_INCLUDE_DIR})
 find_package(teensy_x86_stubs)
 include_directories(${teensy_x86_stubs_INCLUDE_DIR})
