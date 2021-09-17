@@ -3,6 +3,7 @@ project(basic_rtmidi_example)
 
 set(CMAKE_CXX_STANDARD 14)
 
+find_path(RTMIDI_INCLUDE_DIR NAMES RtMidi.h)
 include_directories(${RTMIDI_INCLUDE_DIR})
 
 find_package(teensy_x86_stubs)
