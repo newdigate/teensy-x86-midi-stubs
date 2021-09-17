@@ -1,0 +1,39 @@
+name: libmidi
+on:
+  push:
+    paths-ignore:
+      - 'README.md'
+      - 'LICENSE'
+      - '.gitignore'
+      - 'examples/**'
+      - '.github/workflows/teensy.yml'
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/checkout@v2
+        with:
+          repository: newdigate/teensy-x86-stubs
+          path: teensy-x86-stubs
+
+      - name: download dependencies
+        run: sudo apt-get update && sudo apt-get install -yq librtmidi-dev
+
+      - name: Make and Install teensy-x86-stubs
+        run: cd teensy-x86-stubs && mkdir cmake-build-$BUILD_TYPE && cd cmake-build-$BUILD_TYPE && cmake -DCMAKE_BUILD_TYPE=$BUILD_TYPE .. && sudo make install
+
+      - name: Build and install midi library 
+        working-directory: ${{github.workspace}}
+        shell: bash
+        run: ./install.sh
+
+      - name: Build and install rtmidi bindings
+        working-directory: ${{github.workspace}}/extras/rtmidi
+        shell: bash
+        run: ./install.sh

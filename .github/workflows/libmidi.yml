@@ -1,0 +1,31 @@
+name: libmidi
+on:
+  push:
+    paths-ignore:
+      - 'README.md'
+      - 'LICENSE'
+      - '.gitignore'
+      - 'examples/**'
+      - '.github/workflows/teensy.yml'
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/checkout@v2
+        with:
+          repository: newdigate/teensy-x86-stubs
+          path: teensy-x86-stubs
+
+      - name: Make and Install teensy-x86-stubs
+        run: cd teensy-x86-stubs && mkdir cmake-build-$BUILD_TYPE && cd cmake-build-$BUILD_TYPE && cmake -DCMAKE_BUILD_TYPE=$BUILD_TYPE .. && sudo make install
+
+      - name: Build src
+        working-directory: ${{github.workspace}}
+        shell: bash
+        run: ./install.sh
