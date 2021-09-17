@@ -1,4 +1,6 @@
 # teensy-x86-midi-stubs
+[![libmidi](https://github.com/newdigate/teensy-x86-midi-stubs/actions/workflows/libmidi.yml/badge.svg)](https://github.com/newdigate/teensy-x86-midi-stubs/actions/workflows/libmidi.yml)
+[![libmidi_rtmidi](https://github.com/newdigate/teensy-x86-midi-stubs/actions/workflows/libmidi_rtmidi.yml/badge.svg)](https://github.com/newdigate/teensy-x86-midi-stubs/actions/workflows/libmidi_rtmidi.yml)
 * work in progress !
 * use ```Arduino MIDI Library``` natively in your mac or linux code 
 
