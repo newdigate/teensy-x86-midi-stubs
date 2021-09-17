@@ -1,10 +1,3 @@
 cmake_minimum_required(VERSION 3.5)
 project(teensy_x86_midi_stubs)
 add_subdirectory(src)
-
-find_path(RTMIDI_INCLUDE_DIR NAMES RtMidi.h)
-if (NOT (RTMIDI_INCLUDE_DIR STREQUAL "NOT_FOUND" ))
-    message(STATUS "RtMidi library found, including extras/rtmidi...")
-    add_subdirectory(extras/rtmidi/src)
-    add_subdirectory(extras/rtmidi/examples/basic)
-endif()
