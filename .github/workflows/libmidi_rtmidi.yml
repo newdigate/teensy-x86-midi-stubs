@@ -1,4 +1,4 @@
-name: libmidi
+name: libmidi_rtmidi
 on:
   push:
     paths-ignore:
