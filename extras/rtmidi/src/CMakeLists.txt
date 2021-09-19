@@ -14,7 +14,7 @@ include_directories(${RTMIDI_INCLUDE_DIR})
 
 set(HEADER_FILES RtMidiMIDI.h RtMidiTransport.h)
 
-add_library(teensy_x86_midi_stubs_rtmidi INTERFACE ${HEADER_FILES})
+add_library(teensy_x86_midi_stubs_rtmidi INTERFACE)
 
 set(INCLUDE_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/include/teensy_x86_midi_stubs_rtmidi/)
 set(LIB_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/lib/teensy_x86_midi_stubs_rtmidi )
