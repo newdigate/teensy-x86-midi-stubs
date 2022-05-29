@@ -39,7 +39,8 @@ public:
 			}
 			std::cout << "  Input Port #" << i+1 << ": " << portName << '\n';
 		}
-  		midiin->openPort();
+		if (nPorts > 0)
+	  		midiin->openPort();
 		//midiin->setCallback(midiCallback);
 
 		// RtMidiOut constructor
@@ -62,10 +63,9 @@ public:
 			}
 			std::cout << "  Output Port #" << i+1 << ": " << portName << '\n';
 		}
-		midiout->openPort();
+		if (nPorts > 0)
+			midiout->openPort();
 		std::cout << '\n';
-
-
 	}
 
 	bool beginTransmission(midi::MidiType t)
