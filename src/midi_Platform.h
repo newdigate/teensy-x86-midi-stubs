@@ -26,26 +26,15 @@
  */
 
 #pragma once
-
+#include <Arduino.h>
 #include "midi_Defs.h"
 
 BEGIN_MIDI_NAMESPACE
-
-#if ARDUINO
 
 // DefaultPlatform is the Arduino Platform
 struct DefaultPlatform
 {
    static unsigned long now() { return ::millis(); };
 };
-
-#else
-
-struct DefaultPlatform
-{
-   static unsigned long now() { return 0; };
-};
-
-#endif
 
 END_MIDI_NAMESPACE

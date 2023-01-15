@@ -29,12 +29,7 @@
 
 #include "midi_Namespace.h"
 
-#if ARDUINO
 #include <Arduino.h>
-#else
-#include <inttypes.h>
-typedef uint8_t byte;
-#endif
 
 BEGIN_MIDI_NAMESPACE
 

@@ -26,7 +26,7 @@
  */
 
 #pragma once
-
+#include <Arduino.h>
 #include "midi_Defs.h"
 #include "midi_Platform.h"
 #include "midi_Settings.h"

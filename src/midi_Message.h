@@ -26,7 +26,7 @@
  */
 
 #pragma once
-
+#include <Arduino.h>
 #include "midi_Namespace.h"
 #include "midi_Defs.h"
 #ifndef ARDUINO
