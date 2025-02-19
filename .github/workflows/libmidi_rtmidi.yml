@@ -31,4 +31,4 @@ jobs:
       - name: Build
         working-directory: ${{github.workspace}}/build
         shell: bash
-        run: cmake --build . --target teensy_x86_midi_stubs_rtmidi --config $BUILD_TYPE
+        run: cmake --build . --target basic --config $BUILD_TYPE
