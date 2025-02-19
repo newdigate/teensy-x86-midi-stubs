@@ -2,7 +2,6 @@
 
 #include <vector>
 #include "MIDI.h"
-#include "RtMidiMIDI.h"
 
 template <class SerialPort>
 class RtMidiTransport

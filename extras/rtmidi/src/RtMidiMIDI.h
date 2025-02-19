@@ -1,6 +1,6 @@
 #pragma once
 #include "MIDI.h"
-#include "rtmidi/RtMidi.h"
+#include "RtMidi.h"
 class RtMidiMIDI
 {
 
