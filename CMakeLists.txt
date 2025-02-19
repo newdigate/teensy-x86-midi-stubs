@@ -1,3 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 project(teensy_x86_midi_stubs)
+include(cmake_declare_and_fetch.cmake.in)
+DeclareAndFetch(teensy_x86_stubs https://github.com/newdigate/teensy-x86-stubs.git main src)
 add_subdirectory(src)
+add_subdirectory(extras/rtmidi)
